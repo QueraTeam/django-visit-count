@@ -32,7 +32,7 @@ Count visits in your view like this:
 ```python
 def view_blog_post(request, post_id):
     post = get_object_or_404(MyBlogPost, pk=post_id)
-    post.update_visit_count()
+    post.count_visit()
     ...
 ```
 
@@ -57,6 +57,17 @@ def view_blog_post(request, post_id):
         post.save(update_fields=["total_visits"])
 
     ...
+```
+
+You can pass an optional keyword argument `session_duration` (integer, number of seconds)
+to `count_visit` or `is_new_visit`.
+
+## Settings
+
+Default settings:
+
+```python
+VISIT_COUNT_DEFAULT_SESSION_DURATION = 5 * 60  # seconds
 ```
 
 ## Development

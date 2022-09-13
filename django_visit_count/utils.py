@@ -1,8 +1,10 @@
 from django.core.cache import cache
 from ipware import get_client_ip
 
+from .app_settings import VISIT_COUNT_DEFAULT_SESSION_DURATION
 
-def is_new_visit(request, obj, *, timeout=5 * 60):
+
+def is_new_visit(request, obj, *, session_duration=VISIT_COUNT_DEFAULT_SESSION_DURATION):
     if request.user.is_authenticated:
         user_key = f"user-{request.user.id}"
     else:
@@ -16,5 +18,5 @@ def is_new_visit(request, obj, *, timeout=5 * 60):
     if cache.get(cache_key):
         return False
 
-    cache.set(cache_key, True, timeout)
+    cache.set(cache_key, True, timeout=session_duration)
     return True

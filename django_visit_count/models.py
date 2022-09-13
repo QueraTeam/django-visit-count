@@ -2,13 +2,14 @@ from django.db import models
 from django.db.models import F
 from django.utils.translation import gettext_lazy as _
 
+from .app_settings import VISIT_COUNT_DEFAULT_SESSION_DURATION
 from .utils import is_new_visit
 
 
 class VisitCountMixin:
     visit_count = models.PositiveIntegerField(default=0, help_text=_("Visit count"))
 
-    def update_visit_count(self, request):
-        if is_new_visit(request, self):
+    def count_visit(self, request, session_duration=VISIT_COUNT_DEFAULT_SESSION_DURATION):
+        if is_new_visit(request, self, session_duration=session_duration):
             self.visit_count = F("visit_count") + 1
             self.save(update_fields=["visit_count"])
