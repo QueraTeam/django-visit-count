@@ -21,6 +21,8 @@ Count visits using cache for Django models.
 Use `VisitCountMixin`. It adds a `visit_count` field to your model.
 
 ```python
+from django_visit_count.models import VisitCountMixin
+
 class MyBlogPost(VisitCountMixin, models.Model):
     ...
 ```
@@ -42,6 +44,10 @@ If you need more control, you can use `is_new_visit` function.
 class MyBlogPost(models.Model):
     total_visits = models.PositiveIntegerField(default=0)
     ...
+```
+
+```python
+from django_visit_count.utils import is_new_visit
 
 def view_blog_post(request, post_id):
     post = get_object_or_404(MyBlogPost, pk=post_id)
