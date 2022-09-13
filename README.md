@@ -21,10 +21,17 @@ Count visits using cache for Django models.
 Use `VisitCountMixin`. It adds a `visit_count` field to your model.
 
 ```python
-from django_visit_count.models import VisitCountMixin
+from django_visit_count.mixins import VisitCountMixin
 
 class MyBlogPost(VisitCountMixin, models.Model):
     ...
+```
+
+Create and run migrations on your model.
+
+```shell
+$ python manage.py makemigrations my_blog_app
+$ python manage.py migrate my_blog_app
 ```
 
 Count visits in your view like this:
