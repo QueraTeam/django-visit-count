@@ -39,7 +39,7 @@ Count visits in your view like this:
 ```python
 def view_blog_post(request, post_id):
     post = get_object_or_404(MyBlogPost, pk=post_id)
-    post.count_visit()
+    post.count_visit(request)
     ...
 ```
 
