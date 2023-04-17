@@ -15,3 +15,8 @@ class VisitCountMixin(models.Model):
         if is_new_visit(request, self, session_duration=session_duration):
             self.visit_count = models.F("visit_count") + 1
             self.save(update_fields=["visit_count"])
+
+    def reset_visits(self, save=True):
+        self.visit_count = 0
+        if save:
+            self.save(update_fields=["visit_count"])
