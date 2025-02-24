@@ -14,7 +14,7 @@ dev_requirements = [
 
 setup(
     name="django-visit-count",
-    version="1.2.0",
+    version="1.2.1",
     description="Count visits using cache for Django models",
     long_description=README,
     long_description_content_type="text/markdown",
