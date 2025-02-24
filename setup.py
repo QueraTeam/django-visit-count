@@ -14,7 +14,7 @@ dev_requirements = [
 
 setup(
     name="django-visit-count",
-    version="1.1.1",
+    version="1.2.0",
     description="Count visits using cache for Django models",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -24,7 +24,7 @@ setup(
     license="MIT",
     packages=find_packages(".", include=("django_visit_count", "django_visit_count.*")),
     include_package_data=True,
-    install_requires=["Django>=3.2", "django-ipware>=2.0.0"],
+    install_requires=["Django>=3.2"],
     extras_require={"dev": dev_requirements},
     tests_require=dev_requirements,
     classifiers=[
