@@ -14,8 +14,4 @@ def is_new_visit(request, obj, *, session_duration=VISIT_COUNT_DEFAULT_SESSION_D
 
     cache_key = f"__visit__:{object_key}:{user_key}"
 
-    if cache.get(cache_key):
-        return False
-
-    cache.set(cache_key, True, timeout=session_duration)
-    return True
+    return cache.add(cache_key, True, timeout=session_duration)
